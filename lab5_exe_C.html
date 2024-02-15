@@ -82,6 +82,95 @@ Description : DOM Elements.
 				border: 1px solid red;
 			}
 		</style>
+		<script>
+			document.addEventListener("DOMContentLoaded", function() {
+				// Your function here
+				var companyName = document.getElementsByClassName('companyName');
+				for(let i = 0; i<companyName.length; i++){
+					companyName[i].textContent = 'Rodolfo Gil & Faris Janjua'
+					companyName[i].style.border = 'none'
+				}
+
+				var navBars = document.getElementsByTagName('nav');				
+				for(let i = 0; i < navBars.length; i++){
+					navBars[i].setAttribute('style', 'background-color: purple;');
+				}
+
+				var headerElements = document.getElementsByTagName("h2");
+				for (let i = 0; i < headerElements.length; i++) {
+					var headerText = headerElements[i].innerText;
+					if (headerText === "What is full-stack?") {
+						headerElements[i].parentElement.setAttribute("style", "display: none;")
+					}
+				}
+				
+				var h2Headers = document.getElementsByTagName("h2");
+				for (let i = 0; i < h2Headers.length; i++) {
+					let headerText = h2Headers[i].textContent;
+					if (headerText === "About Us") {
+						let newParagraph = document.createElement("p");
+						newParagraph.textContent = "This is a new paragraph";
+						newParagraph.style.color = "red";
+						aboutUsSection = h2Headers[i].parentElement;
+						aboutUsSection.appendChild(newParagraph);
+					}
+				}
+				// Task 5: Add placeholders to input elements based on their corresponding label IDs
+				var labels2 = document.getElementsByTagName("label");
+				for (let i = 0; i < labels2.length; i++) {
+					let inputId = labels2[i].getAttribute("for");
+					let inputElement = document.getElementById(inputId);
+					if (inputElement) {
+						inputElement.placeholder = labels2[i].textContent;
+					}
+				}
+		
+				let imageElements = document.getElementsByTagName("img");
+				for (let i = 0; i < imageElements.length; i++) {
+					imageElements[i].src = "images/example.svg";
+				}
+		
+				var ulEls = document.getElementsByTagName("ul");
+				for (let i = 0; i < ulEls.length; i++) {
+					let blogNavItem = document.createElement("li");
+					blogNavItem.innerHTML = '<a href="#">Blog</a>';
+					ulEls[i].appendChild(blogNavItem);
+				}
+		
+				var fromEls = document.getElementsByTagName("form")
+				for (let i = 0; i < fromEls.length; i++) {
+					let formChildren = fromEls[i].children;
+
+					for (let j = 0; j < formChildren.length; j++) {
+
+						childType = formChildren[j].getAttribute("type");
+
+						if (childType === "button") {
+
+							let submitButton = formChildren[j];
+							submitButton.addEventListener('click', function () {
+							submitButton.value = "Submitted";
+							submitButton.disabled = true;
+							});
+						}
+					}
+				}
+		
+				var asideEls = document.getElementsByTagName("aside");
+				for (let i = 0; i < asideEls.length; i++) {
+					let linkels = asideEls[i].getElementsByTagName("a");
+					for (var j = 0; j < linkels.length; j++) {
+						linkels[j].style.color = 'green';
+					}
+				}
+		
+				let footerEls = document.getElementsByTagName("footer");
+				for (let i = 0; i < footerEls.length; i++) {
+					footerEls[i].style.border = "2px solid red";
+				}
+			});
+		</script>
+
 	</head>
 	<body>
 		<header>
